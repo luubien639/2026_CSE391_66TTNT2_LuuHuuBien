@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Form Recreation</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .form-container {
+        background-color: white;
+        width: 700px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        font-size: 13px;
+      }
+
+      h3 {
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      hr {
+        border: 0;
+        border-top: 1px solid #999;
+        margin-bottom: 15px;
+      }
+
+      .form-row {
+        display: flex;
+        margin-bottom: 8px;
+        align-items: flex-start;
+      }
+      .label {
+        width: 160px;
+        font-weight: bold;
+        padding-top: 4px;
+        flex-shrink: 0;
+      }
+
+      .input-group {
+        flex-grow: 1;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 4px;
+        border: 1px solid #aaa;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 13px;
+      }
+
+      .static-text {
+        padding-top: 4px;
+      }
+
+      .radio-stack label {
+        display: block;
+        margin-bottom: 2px;
+        font-weight: normal;
+      }
+
+      .editor-container {
+        border: 1px solid #ccc;
+        width: 100%;
+      }
+
+      .editor-toolbar {
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #ccc;
+        padding: 3px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+
+      .toolbar-btn {
+        width: 20px;
+        height: 20px;
+        border: 1px solid transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 12px;
+        color: #555;
+      }
+      .toolbar-btn:hover {
+        border: 1px solid #aaa;
+        background: #ddd;
+      }
+      .toolbar-sep {
+        width: 1px;
+        height: 16px;
+        background: #aaa;
+        margin: 0 2px;
+      }
+
+      .editor-content {
+        padding: 10px;
+        min-height: 80px;
+        font-family: "Times New Roman", serif;
+        font-size: 14px;
+      }
+
+      .captcha-text {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 24px;
+        letter-spacing: 5px;
+        font-weight: bold;
+        color: #444;
+        background-image: radial-gradient(#ccc 1px, transparent 1px);
+        background-size: 3px 3px;
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+      .click-change {
+        font-size: 11px;
+        margin-left: 10px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      .footer {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+      }
+
+      .btn-group-left button {
+        background: #444;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        margin-right: 2px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .btn-group-right button {
+        background: #333;
+        color: white;
+        border: none;
+        padding: 6px 15px;
+        margin-left: 5px;
+        cursor: pointer;
+        border-radius: 2px;
+      }
+
+      .btn-group-right button.cancel {
+        background: #555;
+      }
+
+      .required-note {
+        font-size: 11px;
+        color: #333;
+      }
+
+      .icon-bold {
+        font-weight: bold;
+      }
+      .icon-italic {
+        font-style: italic;
+      }
+      .icon-under {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h3>Basic Info</h3>
+      <hr />
+
+      <div class="form-row">
+        <div class="label">Employee ID</div>
+        <div class="static-text">9</div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Last Name</div>
+        <div class="static-text">Dodsworth</div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">First Name</div>
+        <div class="input-group">
+          <input type="text" value="Anne" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Gender</div>
+        <div class="input-group radio-stack">
+          <label><input type="radio" name="gender" /> Male</label>
+          <label><input type="radio" name="gender" /> Female</label>
+          <label><input type="radio" name="gender" /> XXX</label>
+          <label><input type="radio" name="gender" checked /> ZZZ</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Title</div>
+        <div class="input-group">
+          <input type="text" value="Sales Representative" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Suffix</div>
+        <div class="input-group">
+          <input type="text" value="Ms." />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">BirthDate</div>
+        <div class="input-group" style="display: flex; align-items: center">
+          <input type="text" value="1969-07-02 00:00:00" />
+          <span style="margin-left: 5px; font-size: 11px">(?)</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">HireDate</div>
+        <div class="input-group">
+          <input type="text" value="1994-11-15 00:00:00" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">SSN # (if applicable)</div>
+        <div class="input-group">
+          <input type="text" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Reports To</div>
+        <div class="input-group">
+          <select>
+            <option>Buchanan</option>
+          </select>
+        </div>
+      </div>
+
+      <h3>Contact Info</h3>
+      <hr />
+
+      <div class="form-row">
+        <div class="label">Email</div>
+        <div class="input-group">
+          <input type="text" placeholder="name@example.com" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Address</div>
+        <div class="input-group">
+          <input type="text" value="7 Houndstooth Rd." />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">City</div>
+        <div class="input-group">
+          <input type="text" value="London" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Region</div>
+        <div class="input-group">
+          <input type="text" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Postal Code</div>
+        <div class="input-group">
+          <input type="text" value="WG2 7LT" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Country</div>
+        <div class="input-group">
+          <select>
+            <option>Russian Federation</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">US Home Phone</div>
+        <div class="input-group">
+          <input type="text" value="(234)234-2342" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Photo</div>
+        <div class="input-group">
+          <input type="text" value="EmpID9.bmp" />
+        </div>
+      </div>
+
+      <h3>Optional Info</h3>
+      <hr />
+
+      <div class="form-row">
+        <div class="label">Notes</div>
+        <div class="input-group">
+          <div class="editor-container">
+            <div class="editor-toolbar">
+              <div class="toolbar-btn icon-bold">B</div>
+              <div class="toolbar-btn icon-italic">I</div>
+              <div class="toolbar-btn icon-under">S</div>
+              <div class="toolbar-btn icon-under">U</div>
+              <div class="toolbar-sep"></div>
+              <div class="toolbar-btn">≡</div>
+              <div class="toolbar-btn">≣</div>
+              <div class="toolbar-sep"></div>
+              <div class="toolbar-btn">x²</div>
+            </div>
+            <div class="editor-content" contenteditable="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Preferred Shift</div>
+        <div class="input-group">
+          <label style="margin-right: 15px"
+            ><input type="checkbox" /> Regular</label
+          >
+          <label><input type="checkbox" checked /> Gravy Yard</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="label">Active?</div>
+        <div class="input-group">
+          <input type="checkbox" checked />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="label">Are you human?</div>
+        <div class="input-group">
+          <div>
+            <span class="captcha-text">TIDAWO</span>
+          </div>
+          <div style="margin-top: 2px">
+            <input type="text" style="width: 200px" />
+            <span class="click-change">Click to change</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="btn-group-left">
+          <button>&lt;</button>
+          <button>&gt;</button>
+        </div>
+        <div class="required-note">* required</div>
+        <div class="btn-group-right">
+          <button type="submit">💾 Submit</button>
+          <button type="button" class="cancel">✖ Cancel</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
