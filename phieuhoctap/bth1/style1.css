@@ -1,0 +1,50 @@
+/* TODO 1 & Reset Box Model: Đưa margin, padding về 0 và áp dụng border-box */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* TODO 2: Style cho thẻ body */
+body {
+  font-family: Arial;
+  background-color: #f5f5f5;
+}
+
+/* TODO 3: Style cho Header */
+#main-header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* TODO 4: Dùng class selector cho .nav-link */
+/* Yêu cầu: color: #333; text-decoration: none; padding: 10px 15px; */
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+/* TODO 5: Đổi font cho các thẻ tiêu đề (Đã sửa thành Arial để tránh lỗi phông) */
+h1,
+h2,
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* TODO 6: Dùng descendant selector cho nav a */
+/* Yêu cầu: display: inline-block; margin: 0 10px; */
+
+nav a {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+/* TODO 7: Hiệu ứng khi rê chuột vào link */
+a:hover {
+  color: #ff6600;
+  background-color: #eee;
+}
