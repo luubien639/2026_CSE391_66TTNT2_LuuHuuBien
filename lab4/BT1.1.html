@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quản lý điểm sinh viên</title>
+    <style>
+      .weak-student {
+        background-color: #fff9c4;
+      } /* Tô màu vàng cho SV yếu */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .stats {
+        margin-top: 15px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Quản lý điểm sinh viên</h2>
+
+    <div>
+      <input type="text" id="fullname" placeholder="Họ tên sinh viên" />
+      <input type="number" id="score" placeholder="Điểm (0-10)" step="0.1" />
+      <button id="btnAdd">Thêm</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Họ tên</th>
+          <th>Điểm</th>
+          <th>Xếp loại</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="studentTableBody"></tbody>
+    </table>
+
+    <div class="stats">
+      Tổng số SV: <span id="totalStudents">0</span> | Điểm TB:
+      <span id="avgScore">0</span>
+    </div>
+
+    <script src="BT1.1.js"></script>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Đặt Hàng Nâng Cao</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .form-container {
+        max-width: 500px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="number"],
+      input[type="date"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .error {
+        border-color: red !important;
+        background-color: #fdf2f2;
+      }
+      .success {
+        border-color: green !important;
+      }
+      .error-msg {
+        color: red;
+        font-size: 13px;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .char-count {
+        font-size: 12px;
+        color: #666;
+        float: right;
+      }
+      .char-count.exceeded {
+        color: red;
+        font-weight: bold;
+      }
+
+      .total-price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #d35400;
+        margin: 10px 0;
+      }
+
+      button {
+        padding: 10px 20px;
+        background: #27ae60;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      /* CSS cho Modal Xác nhận */
+      #confirmModal {
+        display: none;
+        padding: 20px;
+        border: 2px solid #2980b9;
+        background: #ecf0f1;
+        border-radius: 8px;
+        max-width: 400px;
+      }
+      #successMessage {
+        display: none;
+        color: green;
+        font-weight: bold;
+        padding: 20px;
+        border: 1px solid green;
+        max-width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mainForm" class="form-container">
+      <h2>Đặt Hàng Trực Tuyến</h2>
+      <form id="orderForm" novalidate>
+        <div class="form-group">
+          <label>Sản phẩm</label>
+          <select id="product">
+            <option value="">-- Chọn sản phẩm --</option>
+            <option value="ao_thun">Áo thun (150.000đ)</option>
+            <option value="quan_jean">Quần Jean (250.000đ)</option>
+            <option value="giay_sneaker">Giày Sneaker (500.000đ)</option>
+          </select>
+          <span class="error-msg" id="err-product"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Số lượng (1-99)</label>
+          <input type="number" id="quantity" value="1" min="1" max="99" />
+          <span class="error-msg" id="err-quantity"></span>
+        </div>
+
+        <div class="total-price">
+          Tổng tiền: <span id="displayTotal">0 VNĐ</span>
+        </div>
+
+        <div class="form-group">
+          <label>Ngày giao hàng</label>
+          <input type="date" id="deliveryDate" />
+          <span class="error-msg" id="err-deliveryDate"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Địa chỉ giao hàng</label>
+          <textarea
+            id="address"
+            rows="3"
+            placeholder="Nhập ít nhất 10 ký tự"
+          ></textarea>
+          <span class="error-msg" id="err-address"></span>
+        </div>
+
+        <div class="form-group">
+          <label
+            >Ghi chú <span id="charCount" class="char-count">0/200</span></label
+          >
+          <textarea id="notes" rows="3"></textarea>
+          <span class="error-msg" id="err-notes"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Phương thức thanh toán</label>
+          <input type="radio" name="payment" value="COD" /> COD (Nhận hàng thanh
+          toán) <br />
+          <input type="radio" name="payment" value="Chuyển khoản" /> Chuyển
+          khoản <br />
+          <input type="radio" name="payment" value="Ví điện tử" /> Ví điện tử
+          <br />
+          <span class="error-msg" id="err-payment"></span>
+        </div>
+
+        <button type="submit">Đặt Hàng</button>
+      </form>
+    </div>
+
+    <div id="confirmModal">
+      <h3>Xác nhận đơn hàng?</h3>
+      <p><strong>Sản phẩm:</strong> <span id="sumProduct"></span></p>
+      <p><strong>Số lượng:</strong> <span id="sumQty"></span></p>
+      <p><strong>Ngày giao:</strong> <span id="sumDate"></span></p>
+      <p>
+        <strong>Tổng tiền:</strong>
+        <span id="sumTotal" style="color: red; font-weight: bold"></span>
+      </p>
+      <button id="btnConfirm" style="background: #2980b9">Xác nhận</button>
+      <button id="btnCancel" style="background: #e74c3c">Hủy</button>
+    </div>
+
+    <div id="successMessage">
+      🎉 Đặt hàng thành công! Chúng tôi sẽ sớm liên hệ với bạn.
+    </div>
+
+    <script src="BT2.2.js"></script>
+  </body>
+</html>
