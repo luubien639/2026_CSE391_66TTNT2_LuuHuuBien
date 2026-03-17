@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quản lý sinh viên</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f6;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+      }
+      #registration-container {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+        position: relative;
+        width: 350px;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+      }
+      .error-msg {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
+      }
+      input.invalid {
+        border-color: #e74c3c;
+        background-color: #fdf2f2;
+      }
+      input.valid {
+        border-color: #2ecc71;
+      }
+      button[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      button[type="submit"]:hover {
+        background: #2980b9;
+      }
+      #success-msg {
+        display: none;
+        padding: 20px;
+        background: #d4edda;
+        color: #155724;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      /* CSS Nâng cấp: Đếm ký tự */
+      .char-counter {
+        float: right;
+        font-size: 12px;
+        color: #7f8c8d;
+        font-weight: normal;
+      }
+
+      /* CSS Nâng cấp: Toggle Mật khẩu */
+      .password-wrapper input {
+        padding-right: 40px; /* Chừa chỗ cho con mắt */
+      }
+      .toggle-btn {
+        position: absolute;
+        right: 10px;
+        top: 32px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        color: #555;
+      }
+
+      /* CSS Nâng cấp: Thanh mức độ mạnh mật khẩu */
+      .strength-meter {
+        height: 6px;
+        background-color: #eee;
+        margin-top: 8px;
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+        width: 0; /* Mặc định 0% */
+      }
+      .strength-weak { width: 33%; background-color: #e74c3c; } /* Đỏ */
+      .strength-medium { width: 66%; background-color: #f1c40f; } /* Vàng */
+      .strength-strong { width: 100%; background-color: #2ecc71; } /* Xanh */
+    </style>
+  </head>
+  <body>
+    <div id="registration-container">
+      <h2 style="text-align: center; margin-top: 0;">Đăng ký tài khoản</h2>
+      <form id="registerForm">
+        
+        <div class="form-group">
+          <label for="fullname">Họ và tên <span class="char-counter" id="name-counter">0/50</span></label>
+          <input type="text" id="fullname" placeholder="Nhập ít nhất 3 ký tự" maxlength="50" />
+          <span class="error-msg" id="err-fullname"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="name@domain.com" />
+          <span class="error-msg" id="err-email"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="text" id="phone" placeholder="0xxxxxxxxx" />
+          <span class="error-msg" id="err-phone"></span>
+        </div>
+
+        <div class="form-group password-wrapper">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" />
+          <button type="button" class="toggle-btn" id="toggle-password">👁</button>
+          <div id="strength-bar" class="strength-meter"></div>
+          <span class="error-msg" id="err-password"></span>
+        </div>
+
+        <div class="form-group password-wrapper">
+          <label for="confirmPassword">Xác nhận mật khẩu</label>
+          <input type="password" id="confirmPassword" />
+          <button type="button" class="toggle-btn" id="toggle-confirm">👁</button>
+          <span class="error-msg" id="err-confirmPassword"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Giới tính:</label>
+          <input type="radio" name="gender" value="Nam" id="gender-male" /> <label for="gender-male" style="display:inline; font-weight:normal;">Nam</label>
+          <input type="radio" name="gender" value="Nữ" id="gender-female" /> <label for="gender-female" style="display:inline; font-weight:normal;">Nữ</label>
+          <span class="error-msg" id="err-gender"></span>
+        </div>
+
+        <div class="form-group">
+          <input type="checkbox" id="terms" /> <label for="terms" style="display:inline; font-weight:normal;">Tôi đồng ý với điều khoản</label>
+          <span class="error-msg" id="err-terms"></span>
+        </div>
+
+        <button type="submit">Đăng ký ngay</button>
+      </form>
+    </div>
+
+    <div id="success-msg">
+      <h3>Đăng ký thành công! 🎉</h3>
+      <p>Chào mừng <strong id="user-display"></strong> đã gia nhập hệ thống.</p>
+    </div>
+
+    <script src="BT3.1.js"></script>
+  </body>
+</html>

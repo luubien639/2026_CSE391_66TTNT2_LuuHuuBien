@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Multi-step Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="step-indicator active">Step 1</div>
+            <div class="step-indicator">Step 2</div>
+            <div class="step-indicator">Step 3</div>
+        </div>
+
+        <form id="multi-step-form">
+            <div class="form-step" id="step-1">
+                <h1>NAME</h1>
+                <input type="text" placeholder="Firstname">
+                <input type="text" placeholder="Lastname">
+                <div class="btn-group single-btn">
+                    <button type="button" class="btn-next">NEXT</button>
+                </div>
+            </div>
+
+            <div class="form-step" id="step-2">
+                <h1>CONTACT</h1>
+                <input type="email" placeholder="E-mail">
+                <input type="tel" placeholder="Phone number">
+                <div class="btn-group">
+                    <button type="button" class="btn-back">BACK</button>
+                    <button type="button" class="btn-next">NEXT</button>
+                </div>
+            </div>
+
+            <div class="form-step" id="step-3">
+                <h1>SUBMIT</h1>
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Password">
+                <div class="btn-group">
+                    <button type="button" class="btn-back">BACK</button>
+                    <button type="submit">SUBMIT</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="bt3.2.js"></script>
+</body>
+</html>
